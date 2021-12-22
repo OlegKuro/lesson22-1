@@ -4,6 +4,41 @@
 # Дерево    - Tree
 # Ловушка   - Trap
 
+class Warrior:
+    def defense(self):
+        pass
+
+    def attack(self):
+        pass
+
+    def move(self):
+        pass
+
+
+class Healer:
+    def defense(self):
+        pass
+
+    def heal(self, target: Warrior):
+        pass
+
+    def move(self):
+        pass
+
+
+class Tree:
+    def defense(self):
+        pass
+
+    def on_fire(self):
+        pass
+
+
+class Trap:
+    def attack(self):
+        pass
+
+
 # Воин в состоянии защищаться от врагов, атаковать и передвигаться по полю
 # Лекарь может защищаться, лечить воина и панически спасаться бегством
 # Дерево может защищаться (попробуй разруби сходу) и гореть в огне
