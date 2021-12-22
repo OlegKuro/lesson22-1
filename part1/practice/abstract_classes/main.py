@@ -1,49 +1,92 @@
-# Создайте абстрактный класс автомобиля Transport c абстрактными методами
-# - start_engine
-# - stop_engine
-# - move
-# - stop
-
-# Унаследуйте от него три класса Boat, Car, Electroscooter
-# для каждого из требуемых методов через print укажите какое-либо действие.
-# К примеру start_engine -> print('Двигатель катера запущен')
-
-# Создайте класс Person у которого будет один единственный метод use_transport.
-# В данный метод в качестве параметра должен передаваться объект реализующий интерфейс Transport
-# Метод для этого объекта должен запускать двигатель, двигаться куда-то, тормозить и глушить двигатель.
-# Для текстовой анимации Вы можете использовать любые фразы, или воспользоваться нашей подборкой:
-# Boat:
-#    - Катер громко затарахтел
-#    - Двигатель катера чихнул напоследок и заглох
-#    - Катер быстро набирает скорость
-#    - Катер остановился
-# Car:
-#    - Машина заурчала двигателем
-#    - Машина стоит с заглушенным двигателем
-#    - Машина едет к цели назначения
-#    - Машина остановилась
-# Electroscooter:
-#    - Мигнул светодиодом
-#    - Мигнул светодиодом дважды
-#    - Прохожие в ужасе разбегаются от очередного камикадзе
-#    - Торможение об стену прошло успешно
+from abc import ABC, abstractmethod
 
 
-# Корректным решением будет когда экземпляр класса Person смог использовать все три различных транспорта
-
-# в решении класс Transport должен быть унаследован от ABC
-# все методы Transport должны быть помечены декоратором @abstractmethod
-# Классы Boat, Car, Electroscooter должны быть унаследованы от Transport
-
-# экземпляр класса Person должен поочередно взаимодействовать с объектами Car, Boat, Electroscooter
-
-# код должен выполняться не выбрасывая исключений
-
-# TODO напишите Ваш код здесь
+def call_logger(method):
+    def logger(*args, **kwargs):
+        print(f'{args[0].__class__.__name__} {method.__name__}')
+    return logger
 
 
-# Отрезок кода для самопроверки.
-# Запустите его, после того как выполните задание
+class Transport(ABC):
+    @abstractmethod
+    def start_engine(self):
+        pass
+
+    @abstractmethod
+    def stop_engine(self):
+        pass
+
+    @abstractmethod
+    def move(self):
+        pass
+
+    @abstractmethod
+    def stop(self):
+        pass
+
+
+class Boat(Transport):
+    @call_logger
+    def start_engine(self):
+        pass
+
+    @call_logger
+    def stop_engine(self):
+        pass
+
+    @call_logger
+    def move(self):
+        pass
+
+    @call_logger
+    def stop(self):
+        pass
+
+
+class Car(Transport):
+    @call_logger
+    def start_engine(self):
+        pass
+
+    @call_logger
+    def stop_engine(self):
+        pass
+
+    @call_logger
+    def move(self):
+        pass
+
+    @call_logger
+    def stop(self):
+        pass
+
+
+class Electroscooter(Transport):
+    @call_logger
+    def start_engine(self):
+        pass
+
+    @call_logger
+    def stop_engine(self):
+        pass
+
+    @call_logger
+    def move(self):
+        pass
+
+    @call_logger
+    def stop(self):
+        pass
+
+
+class Person:
+    def use_transport(self, transport: Transport):
+        transport.start_engine()
+        transport.move()
+        transport.stop()
+        transport.start_engine()
+
+
 if __name__ == '__main__':
     boat = Boat()
     car = Car()
