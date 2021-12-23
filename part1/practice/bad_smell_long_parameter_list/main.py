@@ -2,7 +2,7 @@ class Coords:
     def __init__(self, coords):
         self.x, self.y = coords
 
-    def by_delta(self, dx: int = 0, dy: int = 0):
+    def by_delta(self, dx: float = 0, dy: float = 0):
         return self.__class__((self.x + dx, self.y + dy))
 
 
@@ -36,7 +36,7 @@ class Field:
 
 
 class UnitMoveRequestDTO:
-    def __init__(self, field: Field, direction: Direction, coords: Coords, state: State = State.FEET, speed: int = 1):
+    def __init__(self, field: Field, direction: Direction, coords: Coords, state: State = State.FEET, speed: float = 1):
         self.field = field
         self.direction = direction
         self.coords = coords
@@ -61,7 +61,7 @@ class Unit:
         raise ValueError(f'Unsupported state {state}')
 
     @staticmethod
-    def _get_new_coords(old_coords: Coords, delta: int, direction: Direction) -> Coords:
+    def _get_new_coords(old_coords: Coords, delta: float, direction: Direction) -> Coords:
         if direction == Direction.DOWN:
             return old_coords.by_delta(dy=-delta)
         if direction == Direction.RIGHT:
@@ -69,5 +69,5 @@ class Unit:
         if direction == Direction.UP:
             return old_coords.by_delta(dy=delta)
         if direction == Direction.LEFT:
-            return old_coords.by_delta(dx=-1)
+            return old_coords.by_delta(dx=-delta)
         raise ValueError(f'Unsupported direction {direction}')
